@@ -7,4 +7,4 @@ Projeto de um sistema bancario desenvolvido como desafio na plataforma da DIO.
 - v2 - Separando operações em funções e adicionando as operações (Nova conta, Listar Contas e Novo usuário)
 
 - v3 - adicionando POO
-<img src="v3.png" width="500px">
+<img src="v3.png">
