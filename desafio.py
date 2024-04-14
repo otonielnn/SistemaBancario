@@ -123,8 +123,12 @@ class ContaCorrente(Conta):
 
     def sacar(self, valor):
         numero_saques = len(
-            [transacao for transacao in self. historico.transacoes
-             if transacao["tipo"] == "Saque"])
+            [
+                transacao
+                for transacao in self.historico.transacoes
+                if transacao["tipo"] == "Saque"
+            ]
+        )
 
         excedeu_limite = valor > self.limite
         excedeu_saques = numero_saques >= self.limite_saques
@@ -170,7 +174,10 @@ class Historico:
 
     def gerar_relatorio(self, tipo_transacao=None):
         for transacao in self._transacoes:
-            if tipo_transacao is None or transacao["tipo"].lower() == tipo_transacao.lower():
+            if (
+                tipo_transacao is None
+                or transacao["tipo"].lower() == tipo_transacao.lower()
+            ):
                 yield transacao
 
     def transacoes_do_dia(self):
@@ -178,7 +185,8 @@ class Historico:
         transacoes = []
         for transacao in self._transacoes:
             data_transacao = datetime.strptime(
-                transacao["data"], "%d-%m-%Y %H:%M:%S").date()
+                transacao["data"], "%d-%m-%Y %H:%M:%S"
+            ).date()
             if data_atual == data_transacao:
                 transacoes.append(transacao)
         return transacoes
@@ -230,11 +238,12 @@ def log_transacao(func):
         resultado = func(*args, **kwargs)
         data_hora = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
-        with open(f"{ROOT_PATH}/log.txt", 'a') as arquivo:
+        with open(f"{ROOT_PATH}/log.txt", "a") as arquivo:
             arquivo.write(
                 f"""[{data_hora}] Função {func.__name__} executada com argumentos {args} e {kwargs}. Retornou {resultado}\n"""
             )
         return resultado
+
     return envelope
 
 
@@ -253,8 +262,7 @@ def menu():
 
 
 def filtrar_cliente(cpf, clientes):
-    clientes_filtrados = [
-        cliente for cliente in clientes if cliente.cpf == cpf]
+    clientes_filtrados = [cliente for cliente in clientes if cliente.cpf == cpf]
     return clientes_filtrados[0] if clientes_filtrados else None
 
 
@@ -346,10 +354,12 @@ def criar_cliente(clientes):
     nome = input("Informe o nome completo: ")
     data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
     endereco = input(
-        "Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): ")
+        "Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): "
+    )
 
     cliente = PessoaFisica(
-        nome=nome, data_nascimento=data_nascimento, cpf=cpf, endereco=endereco)
+        nome=nome, data_nascimento=data_nascimento, cpf=cpf, endereco=endereco
+    )
 
     clientes.append(cliente)
 
@@ -408,7 +418,8 @@ def main():
             break
         else:
             print(
-                "\n@@@ Opção Inválida, Por favor selecione novamente a operação desejada. @@@")
+                "\n@@@ Opção Inválida, Por favor selecione novamente a operação desejada. @@@"
+            )
 
 
 main()
