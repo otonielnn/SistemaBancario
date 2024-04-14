@@ -24,3 +24,13 @@ Projeto de um sistema bancario desenvolvido como desafio na plataforma da DIO.
     - Crie um gerador que permita iterar sobre as transações de uma conta e retorne, uma a uma, as transações que foram realizadas. Esse gerador deve também ter uma forma de filtrar as transações baseado em seu tipo (por exemplo, apenas saques ou apenas depósitos).
 
     - Implemente um iterador personalizado Contalterador que permita iterar sobre todas as contas do bancom retornando informações básicas de cada conta (número, saldo atual, etc)
+
+- [v6](https://academiapme-my.sharepoint.com/:p:/g/personal/patrick_lima_dio_me/ETvzzfEKna5Op1cKS1JENwABQSV-NxJ_YlR-AdUOcAUw4A?rtime=r3eUbupb3Eg)
+     O decorador deve registrar o seguinte para cada chamada de função:
+    - Data e hora atuais
+    - Nome da Função
+    - Argumentos da função
+    - Valor retornado pela função
+    - O arquivo de log deve ser chamado log.txt
+    - Se o arquivo log.txt já existir, os novos logs devem ser adicionados ao final do arquivo.
+    - Cada entrada de log deve estar em uma nova linha.
